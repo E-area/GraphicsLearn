@@ -75,6 +75,14 @@ $$
 \\Shear 切变
 \end{cases}
 $$
+`ps:`旋转矩阵是一个**正交矩阵**，即：
+$$
+R_{\theta}=\begin{pmatrix} cos\theta ~ {-}sin\theta \\ sin\theta ~~~ cos\theta \end{pmatrix}
+\\R_{-\theta}=\begin{pmatrix} cos\theta ~~~ sin\theta \\ {-}sin\theta ~~ cos\theta \end{pmatrix}
+\\有:R_\theta ^{-1}=R_{-\theta}=R_\theta ^{T}; 转置矩阵=逆矩阵
+$$
+
+
 其中线性变换可以组合相乘，达到一样的效果。
 $$
 A_n(...(A_2(A_1(X))))=A_n...A_2·A_1·\begin{pmatrix}x \\ y\end{pmatrix}
@@ -131,7 +139,7 @@ $$
 
 - 
 
-![image-20241013163518502](C:\Users\Terra233\AppData\Roaming\Typora\typora-user-images\image-20241013163518502.png)
+![image-20241013163518502](C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241013163518502.png)
 
 ## 3D变换(Transform)
 
@@ -151,4 +159,52 @@ $$
   \\0~~0~~0~~1
   \end{pmatrix} \begin{pmatrix}x\\y\\z\\1 \end{pmatrix}
   $$
+
+- 其中，缩放矩阵为：
+  $$
+  \begin{pmatrix}a~~b~~c\\d~~e~~f\\g~~h~~i\end{pmatrix}=\begin{pmatrix}s_x ~~0~~0
+  \\0 ~~s_y~~0
+  \\0~~0~~s_z\end{pmatrix}
+  $$
+  而变换矩阵则为那三个$t_x,t_y,t_z.$
+
+- 旋转比较复杂，可以分为三种：
+  $$
+  旋转\begin{cases}绕x轴旋转:\begin{pmatrix}a~~b~~c\\d~~e~~f\\g~~h~~i\end{pmatrix}=
+  \begin{pmatrix}
+  1~~~~~~~~0~~~~~~~~0
+  \\0~\cos\theta~{-}\sin\theta
+  \\0 ~~\sin\theta~~\cos\theta
+  \end{pmatrix}
+  \\
+  \\绕y轴旋转:\begin{pmatrix}a~~b~~c\\d~~e~~f\\g~~h~~i\end{pmatrix}=
+  \begin{pmatrix}
+  \cos\theta~~0~~\sin\theta
+  \\0~~~~~~~~1~~~~~~~~0
+  \\{-}\sin\theta~~0~~\cos\theta
+  \end{pmatrix}
+  \\
+  \\绕z轴旋转:\begin{pmatrix}a~~b~~c\\d~~e~~f\\g~~h~~i\end{pmatrix}=
+  \begin{pmatrix}
+  \cos\theta ~~ {-}\sin\theta ~~ 0
+  \\\sin\theta ~~ \cos\theta ~~ 0
+  \\0~~~~~~~~0~~~~~~~~1
+  \end{pmatrix}
   
+  \end{cases}
+  $$
+
+- 为什么绕y轴与众不同？因为$\vec{x}=\vec{y}\times \vec{z},\vec{z}=\vec{x}\times \vec{y},但\vec{y}=\vec{z}\times \vec{x}$.
+
+- 定义欧拉角$R_{xyz}(\alpha,\beta,\gamma)=R_x(\alpha)R_y(\beta)R_z(\gamma)$,三个旋转轴俗称$roll,pitch和yaw.$
+
+- $Rodrigue's$旋转公式：绕坐标轴n旋转α度：
+  $$
+  R(n,\alpha)=cos(\alpha)I+(1-cos(\alpha))nn^T+sin\alpha\begin{pmatrix}
+  0~{-n_z}~~n_y
+  \\n_z~~0~~{-}n_x
+  \\{-}n_y~n_x~~0
+  \end{pmatrix}
+  $$
+
+- 四元数：待补充
