@@ -207,4 +207,24 @@ $$
   \end{pmatrix}
   $$
 
+- 假设我们有一个单位向量 $(\mathbf{u} = (u_x, u_y, u_z))$ 表示旋转轴，以及一个旋转角度$ (\theta)$。Rodrigues公式可以用来计算一个向量$ \(\mathbf{v}\) $绕旋转轴 $(\mathbf{u}) $旋转 $(\theta) $角度后的新向量 \($\mathbf{v}'$\)。
+
+  Rodrigues公式的具体形式如下：
+  $$
+  [ \mathbf{v}' = \mathbf{v} \cos\theta + (\mathbf{u} \times \mathbf{v}) \sin\theta + \mathbf{u} (\mathbf{u} \cdot \mathbf{v}) (1 - \cos\theta) ]
+  $$
+  其中：
+  \- \($\mathbf{v}$\) 是原始向量。
+  \- \($\mathbf{v}'$\) 是旋转后的向量。
+  \- \($\mathbf{u}$\) 是旋转轴的单位向量。
+  \- \($\theta$\) 是旋转角度。
+  \- \($\times$\) 表示向量叉积。
+  \- \($\cdot$\) 表示向量点积。
+
+  这个公式的推导基于向量的旋转和线性代数的基本原理。它将旋转分解为三个部分：
+
+  1. **原始向量的投影**：\($\mathbf{v} \cos\theta$\) 是原始向量在旋转平面上的投影。
+  2. **垂直于旋转轴的分量**：\($(\mathbf{u} \times \mathbf{v}) \sin\theta$\) 是原始向量垂直于旋转轴的分量，经过旋转后产生的分量。
+  3. **沿旋转轴的分量**：\($\mathbf{u} (\mathbf{u} \cdot \mathbf{v}) (1 - \cos\theta)$\) 是原始向量沿旋转轴的分量，经过旋转后保持不变。
+
 - 四元数：待补充
