@@ -93,6 +93,8 @@ Z-buffer具体流程：
 
 其中前三个都是单位向量。
 
+#### 漫反射部分
+
 首先我们知道。反射光在一点会均匀分散：
 
 <img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241027193020574.png" alt="image-20241027193020574" style="zoom:50%;" />
@@ -116,3 +118,111 @@ Z-buffer具体流程：
 其中$k_d$是一个向量，在代表反射强度的同时也能表示颜色的RGB三维。
 
 漫反射与观察方向无关。
+
+#### 高光部分
+
+高光产生的条件是，当观察方向$\vec{v}$和光照在平面产生的镜面反射方向$\vec{R}$足够接近。如图：
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029162243006.png" alt="image-20241029162243006" style="zoom:50%;" />
+
+而Blinn-Phong经验模型告诉我们：
+
+- $\vec{v}与\vec{R}接近 = 法线方向\vec{n}与半程向量\vec{h}接近。$
+
+于是我们得到了高光的计算公式如图：
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029162257252.png" alt="image-20241029162257252" style="zoom:50%;" />
+
+> 使用v与R的模型称为Phong模型，而使用n与h的模型称为Blinn-Phong模型。
+
+式中ks为镜面反射系数（含颜色），式中也考虑了光照的衰减问题。
+
+p为为了避免高光面积过大而使用的指数系数，一般p越大越能体现两个向量越接近；一般取100-200.
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029162921066.png" alt="image-20241029162921066" style="zoom:50%;" />
+
+关于ks和p对高光的影响可以参考下图：（该材质仅有diffuse和specular）
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029163108313.png" alt="image-20241029163108313" style="zoom:50%;" />
+
+#### 环境光部分
+
+我们认为（然而并非正确），任何一点接收到的环境光均相同。
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029163213502.png" alt="image-20241029163213502" style="zoom:50%;" />
+
+然后，把三者结合起来就是一个Blinn-Phong模型的材质了！
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029163447748.png" alt="image-20241029163447748" style="zoom:50%;" />
+
+### Shading Frequency
+
+除了着色方法，着色频率也十分重要。如图：
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029163813709.png" alt="image-20241029163813709" style="zoom:50%;" />
+
+上述三种分别是逐平面着色、逐顶点着色、逐像素着色。
+
+#### 逐平面着色
+
+使用三角形的两边做叉乘得到面的法线方向。
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029164131515.png" alt="image-20241029164131515" style="zoom:50%;" />
+
+#### 逐顶点着色
+
+用三角形的面做插值求顶点法线。
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029164240990.png" alt="image-20241029164240990" style="zoom:50%;" />
+
+插值方法：
+
+由于任何一个顶点都与几个面相联系，所以可以用周围面的法线进行求加权平均或平均来求得面的法线方向。
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029164837645.png" alt="image-20241029164837645" style="zoom:50%;" />
+
+#### 逐像素着色
+
+（这里的Phong shading不是phong模型！只是同名）
+
+对顶点插值求出。
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029164323962.png" alt="image-20241029164323962" style="zoom:50%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029165153718.png" alt="image-20241029165153718" style="zoom:50%;" />
+
+当然，除了着色频率外，模型本身的面数也有影响，如图：
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029164446233.png" alt="image-20241029164446233" style="zoom:50%;" />
+
+推荐网站:http://shadertoy.com/
+
+## Rendering Pipeline
+
+渲染管线如图所示：
+
+（通常一个fragment可以类比成一个像素之类的单位元）
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029165614950.png" alt="image-20241029165614950" style="zoom:50%;" />
+
+结合之前的所学内容：
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029165813372.png" alt="image-20241029165813372" style="zoom:50%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029165828522.png" alt="image-20241029165828522" style="zoom:50%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029165844573.png" alt="image-20241029165844573" style="zoom: 50%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029165906478.png" alt="image-20241029165906478" style="zoom:50%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029170039731.png" alt="image-20241029170039731" style="zoom:50%;" />
+
+## Texture Mapping
+
+纹理的坐标使用uv表示：uv分别对应rgb中的rg，即u越大越绿色，v越大越红色。
+
+- u和v默认的范围都是$(0,1)$.
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029172225292.png" alt="image-20241029172225292" style="zoom:50%;" />
+
+可以无缝衔接循环的纹理称为四方纹理（Tilable Texture）.
