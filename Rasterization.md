@@ -6,7 +6,7 @@
 
 <img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241016170433990.png" alt="image-20241016170433990" style="zoom:50%;" />
 
-## Screen(屏幕)
+## Screen Space(屏幕空间)
 
 定义屏幕$(Screen)$:一个由像素组成的二维数组。
 
@@ -40,7 +40,52 @@
 
   
 
-  
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241103174440730.png" alt="image-20241103174440730" style="zoom:50%;" />
+
+总结一下整个渲染空间变换流程：
+
+1. **模型空间（Model Space）到世界空间（World Space）**：
+
+   - 通过模型矩阵（Model Matrix）进行变换。每个模型都有自己的局部坐标系，这个变换将其坐标转换到整个场景的世界坐标系中。
+
+   ```
+   float4 worldPos = mul(unity_ObjectToWorld, objPos);
+   ```
+
+2. **世界空间到视图空间（View Space）**：
+
+   - 通过视图矩阵（View Matrix）进行变换。这个变换将世界坐标转换到相机坐标系中，使得相机位于原点，且视线沿 -Z 轴方向。
+
+   ```
+   float4 viewPos = mul(unity_WorldToView, worldPos);
+   ```
+
+3. **视图空间到裁剪空间（Clip Space）**：
+
+   - 通过投影矩阵（Projection Matrix）进行变换。这个步骤将视图空间的三维坐标转换为裁剪空间的齐次坐标（Clip Coordinates），范围通常在 [-1, 1] 之间，用于确定哪些顶点在视锥体内。
+
+   ```
+   float4 clipPos = mul(unity_ViewToProjection, viewPos);
+   ```
+
+4. **裁剪空间到归一化设备坐标（NDC）**：
+
+   - 进行齐次除法，将裁剪空间坐标转换为归一化设备坐标（Normalized Device Coordinates，NDC）。这一步将齐次坐标的 `x`, `y`, `z` 除以 `w` 分量。
+
+   ```
+   float3 ndcPos = clipPos.xyz / clipPos.w;
+   ```
+
+5. **NDC到屏幕空间（Screen Space）**：
+
+   - 通过视口变换（Viewport Transform）将归一化设备坐标映射到屏幕坐标系。这个步骤将 NDC 的范围 [−1, 1] 转换为屏幕坐标的像素位置。
+
+   ```
+   // 示意性代码，实际由图形硬件完成
+   screenPos.x = ((ndcPos.x + 1) / 2) * screenWidth;
+   screenPos.y = ((ndcPos.y + 1) / 2) * screenHeight;
+   ```
 
 ## Rasterlizing Triangle Meshes
 

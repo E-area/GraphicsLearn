@@ -9,9 +9,7 @@
 
 在以摄像机为原点的坐标系里，默认约定俗成$up ~at~ Y,gaze ~at~-Z,\vec e在Origin点$.
 
-我们通过操作$M_{view}$把坐标系从世界转换到以摄像
-
-机为原点的坐标系。
+我们通过操作$M_{view}$把坐标系从世界转换到以摄像机为原点的坐标系(视图空间)。
 
 <img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241014204627756.png" alt="image-20241014204627756" style="zoom:50%;" />
 $$
@@ -40,6 +38,8 @@ $$
 正交投影一般被应用在工程制图中，特点是平行线永远平行。
 
 透视投影则是近似于人眼成像，近大远小，平行线会相交。($Parallel~ lines ~converge ~at ~single~ point.$)
+
+投影变换可以把视图空间(`view space`)的坐标转换为裁剪空间（`clip space`）坐标.
 
 <img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241015154134263.png" alt="image-20241015154134263" style="zoom: 67%;" />
 
@@ -103,6 +103,18 @@ $$
   $$
 
 - 最后，$M_{persp}=M_{ortho}M_{persp\rightarrow ortho}.$
+
+- ```cs
+  // 对象空间 -> 世界空间
+  float4 worldPos = mul(unity_ObjectToWorld, objPos);
+  
+  // 世界空间 -> 视图空间
+  float4 viewPos = mul(unity_WorldToView, worldPos);
+  
+  // 视图空间 -> 裁剪空间（通过投影矩阵）
+  float4 clipPos = mul(unity_ViewToProjection, viewPos);
+  
+  ```
 
 
 
