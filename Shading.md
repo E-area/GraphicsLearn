@@ -226,3 +226,62 @@ p为为了避免高光面积过大而使用的指数系数，一般p越大越能
 <img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241029172225292.png" alt="image-20241029172225292" style="zoom:50%;" />
 
 可以无缝衔接循环的纹理称为四方纹理（Tilable Texture）.
+
+
+
+
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105155919140.png" alt="image-20241105155919140" style="zoom: 33%;" />
+
+
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105160403808.png" alt="image-20241105160403808" style="zoom: 33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105160625572.png" alt="image-20241105160625572" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105160810265.png" alt="image-20241105160810265" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105161328806.png" alt="image-20241105161328806" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105161747669.png" alt="image-20241105161747669" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105162219155.png" alt="image-20241105162219155" style="zoom:33%;" />
+
+
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105162610830.png" alt="image-20241105162610830" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105162859214.png" alt="image-20241105162859214" style="zoom:33%;" />
+
+
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105163006500.png" alt="image-20241105163006500" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105163758481.png" alt="image-20241105163758481" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105163934559.png" alt="image-20241105163934559" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105164430912.png" alt="image-20241105164430912" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105164536342.png" alt="image-20241105164536342" style="zoom:33%;" />
+
+
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105164629916.png" alt="image-20241105164629916" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105165159412.png" alt="image-20241105165159412" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105165334032.png" alt="image-20241105165334032" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105165609405.png" alt="image-20241105165609405" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105165651761.png" alt="image-20241105165651761" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105165807389.png" alt="image-20241105165807389" style="zoom:33%;" />
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105170104045.png" alt="image-20241105170104045" style="zoom:33%;" />
+
+
+
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105170141091.png" alt="image-20241105170141091" style="zoom:33%;" />
+
