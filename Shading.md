@@ -298,6 +298,8 @@ ps，重心坐标没有`投影不变性`，所以最好先在三维里插值再�
 
 具体方法是生成各种分辨率的不同层数的图，俗称图像金字塔：
 
+<img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\MipMap_Example_STS101.jpg" alt="img" style="zoom: 50%;" />
+
 <img src="C:\Users\Terra233\Desktop\ComputerGraphicsLearn\Images\image-20241105163758481.png" alt="image-20241105163758481" style="zoom:33%;" />
 
 由于新图的分辨率以平方指数递减，所以额外储存这样一个金字塔只多占用了原分辨率三分之一的大小。
